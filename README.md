@@ -4,6 +4,7 @@
 ## PROGRAM
 
 ## CLIENT
+```
 import socket
 from pythonping import ping
 s = socket.socket()
@@ -23,8 +24,9 @@ while True:
         c.send(f"Error: {e}".encode())
 c.close()
 s.close()
-
+```
 ## SERVER
+```
 import socket 
 s=socket.socket() 
 s.connect(('localhost',8000)) 
@@ -32,7 +34,7 @@ while True:
    ip=input("Enter the website you want to ping ") 
    s.send(ip.encode()) 
    print(s.recv(1024).decode())
-
+```
 ## Procedure: To do this EXPERIMENT- follows these steps:
 <BR>
 In this EXPERIMENT- students have to understand basic networking commands e.g cpdump, netstat, ifconfig, nslookup ,traceroute and also Capture ping and traceroute PDUs using a network protocol analyzer 
