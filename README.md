@@ -1,6 +1,38 @@
 # 4.Execution_of_NetworkCommands
 ## AIM :Use of Network commands in Real Time environment
 ## Software : Command Prompt And Network Protocol Analyzer
+## PROGRAM
+
+## CLIENT
+import socket
+from pythonping import ping
+s = socket.socket()
+s.bind(('localhost', 8000))
+s.listen(5)
+print("Server is listening on port 8000...")
+c, addr = s.accept()
+print("Connected to:", addr)
+while True:
+    hostname = c.recv(1024).decode()
+    if not hostname:
+        break
+    try:
+        response = ping(hostname, verbose=False)
+        c.send(str(response).encode())
+    except Exception as e:
+        c.send(f"Error: {e}".encode())
+c.close()
+s.close()
+
+## SERVER
+import socket 
+s=socket.socket() 
+s.connect(('localhost',8000)) 
+while True: 
+   ip=input("Enter the website you want to ping ") 
+   s.send(ip.encode()) 
+   print(s.recv(1024).decode())
+
 ## Procedure: To do this EXPERIMENT- follows these steps:
 <BR>
 In this EXPERIMENT- students have to understand basic networking commands e.g cpdump, netstat, ifconfig, nslookup ,traceroute and also Capture ping and traceroute PDUs using a network protocol analyzer 
@@ -27,6 +59,7 @@ This commands includes
 <BR>
 
 ## Output
+![image](https://github.com/user-attachments/assets/f26fea57-b036-4ced-a15e-93760501c5c8)
 
 ## Result
 Thus Execution of Network commands Performed 
